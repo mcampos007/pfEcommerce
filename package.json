@@ -1,0 +1,33 @@
+{
+  "name": "pfecommerce",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/app.js",
+    "local": "nodemon src/app.js --mode local --persist mongodb",
+    "prod": "nodemon src/app.js --mode prod",
+    "dev": "nodemon src/app.js --mode dev  --persist mongodb",
+    "testing": "nodemon src/app.js --mode test --persist mongodb"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@faker-js/faker": "^8.4.1",
+    "bcrypt": "^5.1.1",
+    "commander": "^12.0.0",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.3.1",
+    "passport": "^0.7.0",
+    "socket.io": "^4.7.5",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.0",
+    "winston": "^3.13.0"
+  }
+}

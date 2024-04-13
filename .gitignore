@@ -1,0 +1,11 @@
+node_modules
+src/config/.env.development
+src/config/.env.local
+src/config/.env.production
+src/config/.env.test
+
+.env
+.env.zip
+src/logs/access.log
+olds
+src/logs

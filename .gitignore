@@ -9,3 +9,6 @@ src/config/.env.test
 src/logs/access.log
 olds
 src/logs
+
+public/images/**
+!.gitkeep

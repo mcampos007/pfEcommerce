@@ -1,0 +1,119 @@
+paths:
+  /api/users/login:
+    post:
+      tags:
+        - Users
+      summary: End Point para el Login del usuario
+      description: Login de Usuario
+      operationId: Loggin
+      requestBody:
+        description: Login in to system
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+              $ref: '#components/schemas/User'
+      responses:
+        '200':
+          description: successfull operation
+        '401':
+          description: 'Invalid credentials!'
+        '500':
+          description: 'Error interno del servidor, usualmente generado por una query defectuosa o un fallo de conexion con la base de datos'
+  /api/users/register:
+    post:
+      tags:
+        - Users
+      summary: Register new user
+      description: Register a new user
+      operationId: Register
+      requestBody:
+        description: Register a new User
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                first_name:
+                  type: string
+                  required: true
+                  example: mario
+                last_name:
+                  type: string,
+                  required: false
+                  example: campos
+                email:
+                  type: string
+                  required: true
+                  unique: true
+                  example: mario@mario
+                age:
+                  type: Number
+                  required: true
+                  example: 57
+                password:
+                  type: string
+                  required: false
+                  example: 123qwe
+                cart:
+                  type: string
+                  ref: 'Cart'
+                  example:
+                loggedBy:
+                  type: string
+                  required: false
+                  example: form
+                role:
+                  type: string
+                  required: true
+                  example: 'user'
+              $ref: '#components/schemas/User'
+      responses:
+        '201':
+          description: 'successfull operation'
+        '400':
+          description: 'Token missing, Unauthorized!'
+        '500':
+          description: 'Error interno del servidor, usualmente generado por una query defectuosa o un fallo de conexion con la base de datos'
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        first_name:
+          type: string
+          required: true
+        last_name:
+          type: string
+          required: false
+        email:
+          type: string
+          required: true
+          unique: true
+        age:
+          type: number
+          required: true
+        password:
+          type: string
+          required: false
+        loggedBy:
+          type: string
+          required: false
+        role:
+          type: string
+          default: user
+          required: true
+      example:
+        _id: ObjectId('65bc03555e6d3728b6ccadd6')
+        first_name: test
+        last_name: test
+        email: usuario@usuario
+        age: 57
+        password: 2123qwe
+        loggedBy: form
+        role: user

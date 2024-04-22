@@ -1,6 +1,6 @@
 // socketManager.js
 import { Server } from 'socket.io';
-import messagesDao from '../dao/mongodb/messages.dao.js';
+import messagesDao from '../services/dao/mongodb/messages.dao.js';
 
 const initSocket = (server) => {
   const io = new Server(server);

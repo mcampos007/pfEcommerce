@@ -17,14 +17,16 @@ const customLevelsOptions = {
     error: 1,
     warning: 2,
     info: 3,
-    debug: 4,
+    http: 4,
+    debug: 5,
   },
   colors: {
     fatal: 'red',
     error: 'orange',
     warning: 'yellow',
-    info: 'blue',
-    debug: 'white',
+    info: 'green',
+    http: 'white',
+    debug: 'blue',
   },
 };
 
@@ -33,7 +35,7 @@ winston.addColors(customLevelsOptions.colors);
 const logger = winston.createLogger({
   levels: customLevelsOptions.levels,
   format: winston.format.combine(
-    winston.format.colorize(),
+    winston.format.colorize({ colors: customLevelsOptions.colors }),
     winston.format.simple()
   ),
 
@@ -59,13 +61,13 @@ const logger = winston.createLogger({
 // with the colorized simple format.
 //
 // console.log(config.environment);
-if (config.environment === 'prod') {
+if (config.environment === 'prod' || config.environment === 'prod') {
   // console.log('Habilitado en console');
   logger.add(
     new winston.transports.Console({
       level: 'info',
       format: winston.format.combine(
-        winston.format.colorize(),
+        winston.format.colorize({ colors: customLevelsOptions.colors }),
         winston.format.simple()
       ),
     })

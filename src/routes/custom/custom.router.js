@@ -77,8 +77,8 @@ export default class CustomRouter {
     /* const token = authHeader.split(' ')[1]//Se hace el split para retirar la palabra Bearer. */
 
     let token = null;
-    /* console.log("Entrando a Cookie Extractor");
-    console.log(req.cookies); */
+    // console.log('Entrando a Cookie Extractor');
+    // console.log(req.cookies);
     if (req && req.cookies) {
       //Validamos que exista el request y las cookies.
       token = req.cookies['jwtCookieToken'];
@@ -86,6 +86,7 @@ export default class CustomRouter {
 
     if (!token) {
       //return res.redirect('/login')
+      // console.log(3, 'aqui estoy');
       return res.status(401).send({ error: 'Token missing, Unauthorized!' });
     }
     // Validamos token

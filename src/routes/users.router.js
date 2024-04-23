@@ -30,6 +30,8 @@ export default class UsersExtendRouter extends CustomRouter {
         =====================================================*/
     // get all users
     this.get('/', ['ADMIN'], getAll);
+    // get user by UID
+    this.get('/:uid', ['USER', 'PREMIUM', 'ADMIN'], findById);
     // Register a new user
     this.post('/register', ['PUBLIC'], validateUser, register);
     // Login
@@ -39,7 +41,7 @@ export default class UsersExtendRouter extends CustomRouter {
     //Recover current user data
     this.get('/current', ['USER', 'PREMIUM', 'ADMIN'], current);
     //change user to premium and premium to user
-    this.post('/premium/:uid', ['USER', 'PREMIUM'], premiumUserChange);
+    this.post('/premium/:uid', ['USER', 'PREMIUM', 'ADMIN'], premiumUserChange);
 
     this.get('/adminUser', ['ADMIN'], adminUser);
 

@@ -1,0 +1,100 @@
+<nav class="navbar navbar-transparent navbar-absolute">
+    <div class="container">
+        {{!-- {{> socialLinks}} --}}
+        {{> navbar}}
+    </div>
+</nav>
+<div class="wrapper">
+    <div class="header header-filter" style="background-image: url('assets/img/city.jpg'); "></div>
+    <div class="main main-raised">
+        <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 "></div>
+        <div class="profile-content">
+            {{!-- <h3 class="title">{{ title }}</h3> --}}
+            
+            <div class="container">
+            {{#if username}}
+            <div class="alert alert-info">
+                <div class="container-fluid">
+                    <div class="alert-icon">
+                        <i class="material-icons">info_outline</i>
+                    </div>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true"><i class="material-icons">clear</i></span>
+                    </button>
+                    <b>Bienvenido:</b> {{username}} Tu rol es {{role}}
+                </div>
+            </div>
+            {{/if}}
+            {{!-- <button class="btn btn-primary btn-round" id="logoutButton">Logout</button>
+            <button class="btn btn-primary btn-round" id="profileButton">Profile</button> --}}
+            <div class="section text-center">
+                <h2 class="title">{{title}}</h2>
+                <div class="card-body">
+                    <div class="card-body">
+                        {{!-- <a href="/productshomemg" class="btn btn-info">volver</a> --}}
+                    </div>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th class="text-center">#</th>
+                                <th>Name</th>
+                                <th>Last Name</th>
+                                <th>E-mail</th>
+                                <th>Role</th>
+                                <th class="text-right">Actions</th>
+                            </tr>
+                        </thead>
+                        {{#each users}}
+                        <tr>
+                            <td class="text-center" >
+                                {{#if this.thumbnail}}
+                                    <img src="{{this.thumbnail.[0]}}" alt="Thumbnail" style="width: 30px; height: 30px;">
+                                {{else}}
+                                    <img src="/images/no-image-avatar.jpg" alt="No Image" style="width: 30px; height: 30px;">
+                                {{/if}}
+                            </td>
+                            <td class="text-left">{{this.first_name}}</td>
+                            <td class="text-left">{{this.last_name}}</td>
+                            <td class="text-left">{{this.email}}</td>
+                            <td class="text-left">{{this.role}}</td>
+                            <td class="td-actions text-right">
+                                <form method="get" action="/admin/users/{{this._id}}/edit">                                    
+                                    <a href="/admin/users/{{this._id}}/edit" rel="tooltip" title="Edit " class="btn btn-info btn-simple btn-xs" >
+                                        <i class="fa fa-pencil-square-o"></i>
+                                    </a> 
+                                </form>
+                                
+                                {{!-- <button type="button" rel="tooltip" title="Edit Product" class="btn btn-success btn-simple btn-xs">
+                                    <i class="fa fa-edit"></i>
+                                </button>
+                                <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
+                                    <i class="fa fa-times"></i>
+                                </button> --}}
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </table>
+                </div>
+                {{#if products.prevPage}}
+                    <button> <a href="/products?page={{products.prevPage}}">Anterior</a></button>
+                {{/if}}
+                {{#if products.nextPage}}
+                    <button> <a href="/products?page={{products.nextPage}}">Siguiente</a></button>
+                {{/if}}
+            </div>
+        </div>
+        </div>
+        
+    </div>
+</div>
+
+<script>
+    document.getElementById('logoutButton').addEventListener('click', function() {
+        // Redirige a la ruta /logout
+        window.location.href = '/logout';
+    });
+    document.getElementById('profileButton').addEventListener('click', function() {
+        // Redirige a la ruta /profile
+        window.location.href = '/profile';
+    });
+</script>

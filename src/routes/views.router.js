@@ -137,7 +137,7 @@ export default class ViewsRouter extends CustomRouter {
       res.render('users/register', data);
     });
 
-    //                                Rutas Admin
+    //          ***********************              Rutas Admin    *********************
     // Products
     this.get('/admin/products', ['ADMIN'], async (req, res) => {
       try {
@@ -180,6 +180,133 @@ export default class ViewsRouter extends CustomRouter {
         });
       }
     });
+
+    // users list
+    this.get('/admin/users', ['ADMIN'], async (req, res) => {
+      try {
+        const apiUrl = `http://localhost:${config.port}/api/users`;
+        const response = await axios(apiUrl, req);
+
+        // console.log(response.data); // Datos de la respuesta
+        // console.log(response.status); // Código de estado HTTP
+        // console.log(response.headers);
+        let isAdmin = false;
+        let isPremium = false;
+        let isUser = false;
+        if (req.user.role === 'admin') isAdmin = true;
+        if (req.user.role === 'premium') isPremium = true;
+        if (req.user.role === 'user') isUser = true;
+        const users = response.data;
+
+        const data = {
+          title: 'profile-page',
+          bodyClass: 'profile-page',
+        };
+        res.render('admin/users/index', {
+          title: 'User List',
+          users,
+          bodyClass: 'profile-page',
+          username: req.user.name,
+          role: req.user.role,
+          isAdmin,
+          isPremium,
+          isUser,
+        });
+      } catch (error) {
+        console.log(1, error);
+        //res.status(500).json({ error: 'Hubo un error al Recuperar Products.' });
+        return res.render('errors', {
+          message: 'Hubo un error al Recuperar Lista de Usuario.',
+        });
+      }
+    });
+
+    // User Edit
+    this.get('/admin/users/:uid/edit', ['ADMIN'], async (req, res) => {
+      try {
+        const apiUrl = `http://localhost:${config.port}/api/users/${req.params.uid}`;
+        let isAdmin = false;
+        let isPremium = false;
+        let isUser = false;
+
+        const response = await axios(apiUrl, req);
+        const user = response.data;
+
+        if (user.role === 'admin') isAdmin = true;
+        if (user.role === 'premium') isPremium = true;
+        if (user.role === 'user') isUser = true;
+        const data = {
+          title: 'profile-page',
+          bodyClass: 'profile-page',
+        };
+        res.render('admin/users/edit', {
+          title: 'Change User Role',
+          user,
+          bodyClass: 'profile-page',
+          username: req.user.name,
+          role: req.user.role,
+          isAdmin,
+          isPremium,
+          isUser,
+          error: false,
+        });
+      } catch (error) {
+        //res.status(500).json({ error: 'Hubo un error al Recuperar Products.' });
+        return res.render('errors', {
+          message: 'Hubo un error al Recuperar datos del Usuario.',
+        });
+      }
+    });
+
+    //Change Role
+    this.get(
+      '/admin/users/:uid/changerole',
+      ['ADMIN', 'PREMIUM', 'USER'],
+      async (req, res) => {
+        console.log(1, req.cookies);
+        console.log(2, req.params);
+
+        const token = req.cookies.jwtCookieToken;
+
+        // Verificar si se encontró el token
+        if (!token) {
+          throw new Error('Token de autenticación no encontrado');
+        }
+
+        // Construir el objeto de datos que deseas enviar en la solicitud POST
+        const postData = {
+          // Agrega cualquier otro dato que desees enviar junto con el token
+          token: token,
+        };
+
+        try {
+          const apiUrl = `http://localhost:${config.port}/api/users/premium/${req.params.uid}`;
+          const response = await axios.post(apiUrl, postData);
+          console.log(2, response.data); // Datos de la respuesta
+          console.log(3, response.status); // Código de estado HTTP
+          console.log(4, response.headers); // Encabezados de la respuesta
+          const user = response.data;
+        } catch (error) {
+          console.log(5, data);
+          // res.status(400).send(error);
+
+          //res.status(500).json({ error: 'Hubo un error al Recuperar Products.' });
+          // res.render('admin/users/edit', {
+          //   title: 'Change User Role',
+          //   user,
+          //   bodyClass: 'profile-page',
+          //   username: req.user.name,
+          //   role: req.user.role,
+          //   isAdmin,
+          //   isPremium,
+          //   isUser,
+          //   error: true,
+          //   errormessage: error,
+          // });
+        }
+        res.send('ok');
+      }
+    );
 
     //Rutas                           User
     //Products

@@ -80,7 +80,43 @@ paths:
           description: 'Token missing, Unauthorized!'
         '500':
           description: 'Error interno del servidor, usualmente generado por una query defectuosa o un fallo de conexion con la base de datos'
+  /api/users/logout:
+    get:
+      security:
+        - bearerAuth: []
+      tags:
+        - Users
+      summary: 'Cerrar sesión de usuario'
+      description: 'Permite al usuario cerrar sesión y eliminar su token de autenticación.'
+      responses:
+        '200':
+          description: 'Sesión cerrada exitosamente'
+        '401':
+          description: 'No autorizado: el usuario no ha iniciado sesión'
+        '500':
+          description: 'Error del servidor: no se pudo cerrar la sesión'
+  /api/users/:
+    get:
+      security:
+        - bearerAuth: []
+      tags:
+        - Users
+      summary: 'Recuperar lista de usuarios'
+      description: 'Permite recuperar la lista de usuarios. Se requiere nivel de admin.'
+      responses:
+        '200':
+          description: 'Se devuelve una array con las lista de usuarios'
+        '401':
+          description: 'N..'
+        '500':
+          description: '...'
+
 components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
   schemas:
     User:
       type: object

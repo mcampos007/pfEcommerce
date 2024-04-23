@@ -1,5 +1,6 @@
 import { userService } from '../services/service.js';
-import UsertDTO from '../services/dto/userdocuments.dto.js';
+import UserDocsDTO from '../services/dto/userdocuments.dto.js';
+import UsersDto from '../services/dto/user.dto.js';
 import {
   createHash,
   isValidPassword,
@@ -11,10 +12,10 @@ import config from '../config/config.js';
 export const getAll = async (req, res) => {
   try {
     const { limit, page, query, sort } = req.body;
-    let users = await userService.getAll(limit, page, query, sort);
+    const users = await userService.getAll(limit, page, query, sort);
     res.send(users);
   } catch (error) {
-    console.error(error);
+    // console.error(error);
     res
       .status(500)
       .send({ error: error, message: 'No se pudo obtener los usuario.' });
@@ -26,7 +27,7 @@ export const current = async (req, res) => {
     // console.log(req.params)
     // console.log(req.body)
     let result = await userService.findByUsername(req.user.email);
-    let user = new UsertDTO(result);
+    let user = new UserDocsDTO(result);
     res.sendSuccess(user);
   } catch (error) {
     //    console.error(error);
@@ -38,11 +39,12 @@ export const current = async (req, res) => {
 };
 
 export const premiumUserChange = async (req, res) => {
+  console.log('LLegue');
   try {
     //res.sendSuccess(req.user)
     const { uid } = req.params;
     let user = await userService.findById(uid);
-    user = new UsertDTO(user);
+    user = new UserDocsDTO(user);
     // console.log(0, uid);
     // console.log(1, user);
 
@@ -182,7 +184,7 @@ export const login = async (req, res) => {
 
 export const register = async (req, res) => {
   try {
-    let newUser = new UsertDTO(req.body);
+    let newUser = new UsersDto(req.body);
     // console.log(newUser);
     newUser.password = createHash(req.body.password);
     newUser.loggedBy = 'form';
@@ -236,7 +238,8 @@ export const findById = async (req, res) => {
         error: 'El Usuario No Existe',
       });
     }
-    return result;
+
+    return res.json(result);
   } catch (error) {
     return error;
   }

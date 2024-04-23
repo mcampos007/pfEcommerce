@@ -40,7 +40,7 @@ app.use(
       mongoUrl: config.urlMongo,
       //mongoOptions --> opciones de confi para el save de las sessions
       mongoOptions: { useNewUrlParser: true, useUnifiedTopology: true },
-      ttl: 10 * 60,
+      ttl: 60 * 60,
     }),
 
     secret: config.privatekey,

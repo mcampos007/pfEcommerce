@@ -1,0 +1,917 @@
+{
+	"info": {
+		"_postman_id": "3aae1038-5dfe-4dc9-a34d-6a384ab57764",
+		"name": "PFEcommerce",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31125899",
+		"_collection_link": "https://orange-moon-137435.postman.co/workspace/New-Team-Workspace~d607b7a8-4760-4761-aa22-82d07d620a2e/collection/31125899-3aae1038-5dfe-4dc9-a34d-6a384ab57764?action=share&source=collection_link&creator=31125899"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "RegisterStandardUser",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"first_name\":\"nombre usuario\",\r\n    \"last_name\":\"apellido usuario\",\r\n    \"email\": \"usuario@usuario\",\r\n    \"age\": 57,\r\n    \"password\":\"2123qwe\",\r\n    \"role\":\"admin\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/users/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LoginStandarUser",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"usuario@usuario\",\r\n    \"password\": \"2123qwe\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/users/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/users/logout",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LoginAdmin",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"superMario\",\r\n    \"password\": \"Bross\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/users/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "current",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5hbWUiOiJub21icmUgdXN1YXJpbyIsImxhc3RfbmFtZSI6ImFwZWxsaWRvIHVzdWFyaW8iLCJlbWFpbCI6InVzdWFyaW9AdXN1YXJpbyIsImFnZSI6NTcsInJvbGUiOiJ1c2VyIiwidXNlcklkIjoiNjYyMmFjYTQ4ZTVkOTQzZTc1MGZjZTg0In0sImlhdCI6MTcxMzU2MjkwNSwiZXhwIjoxNzEzNTY2NTA1fQ.yNVY0j_CJS6qGcPA-psHJWlz2igVDf7imDI5e8VXCrA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/users/current",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users",
+								"current"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ChangeRole",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5hbWUiOiJub21icmUgdXN1YXJpbyIsImxhc3RfbmFtZSI6ImFwZWxsaWRvIHVzdWFyaW8iLCJlbWFpbCI6InVzdWFyaW9AdXN1YXJpbyIsImFnZSI6NTcsInJvbGUiOiJ1c2VyIiwidXNlcklkIjoiNjYyMmFjYTQ4ZTVkOTQzZTc1MGZjZTg0In0sImlhdCI6MTcxMzc5MjAyMiwiZXhwIjoxNzEzNzk1NjIyfQ.Jiapsv4Wpq0z5mVpI2pyVXU_9-CgF-umICNhXHm_wpQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/users/premium/6622aca48e5d943e750fce84",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users",
+								"premium",
+								"6622aca48e5d943e750fce84"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "uploadDocumentsEstadoDeCuenta",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5hbWUiOiJub21icmUgdXN1YXJpbyIsImxhc3RfbmFtZSI6ImFwZWxsaWRvIHVzdWFyaW8iLCJlbWFpbCI6InVzdWFyaW9AdXN1YXJpbyIsImFnZSI6NTcsInJvbGUiOiJ1c2VyIiwidXNlcklkIjoiNjYyMmFjYTQ4ZTVkOTQzZTc1MGZjZTg0In0sImlhdCI6MTcxMzc4Njg2NywiZXhwIjoxNzEzNzkwNDY3fQ.GLfo1vMJCsNEbUMlbM1Nz1NQitNOW4BCfVjcP5eFhoU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": [
+										"/C:/Users/mcamp/Pictures/logo_axion.png",
+										"/C:/Users/mcamp/Pictures/demofondo1.jpg"
+									]
+								},
+								{
+									"key": "document",
+									"value": "Estado de cuenta",
+									"type": "text"
+								},
+								{
+									"key": "tipofile",
+									"value": "documents",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/users/6622aca48e5d943e750fce84/documents",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users",
+								"6622aca48e5d943e750fce84",
+								"documents"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "uploadDocuments",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "profileImage",
+											"value": "/profileImage",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "file",
+											"type": "file",
+											"src": [
+												"/C:/Users/mcamp/Pictures/demofondo1.jpg",
+												"/C:/Users/mcamp/Pictures/fondofiambres.png",
+												"/C:/Users/mcamp/Pictures/logo_axion.png"
+											]
+										},
+										{
+											"key": "profileImage",
+											"value": "profiles",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/users/661be3986a1b1e189c5c79ab/documents",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"users",
+										"661be3986a1b1e189c5c79ab",
+										"documents"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://127.0.0.1:5501"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "2"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2-eoX0dku9ba8cNUXvu/DyeabcC+s\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 15 Apr 2024 21:08:41 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "ok"
+						}
+					]
+				},
+				{
+					"name": "uploadDocumentsIdentificacion",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5hbWUiOiJub21icmUgdXN1YXJpbyIsImxhc3RfbmFtZSI6ImFwZWxsaWRvIHVzdWFyaW8iLCJlbWFpbCI6InVzdWFyaW9AdXN1YXJpbyIsImFnZSI6NTcsInJvbGUiOiJ1c2VyIiwidXNlcklkIjoiNjYyMmFjYTQ4ZTVkOTQzZTc1MGZjZTg0In0sImlhdCI6MTcxMzc5MDU1MiwiZXhwIjoxNzEzNzk0MTUyfQ.GFggMXXU_jNc8ltpgge0kNvRAl3i6tPCrT0qQX-Gq_w",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": [
+										"/C:/Users/mcamp/Pictures/demofondo1.jpg",
+										"/C:/Users/mcamp/Pictures/fondofiambres.png"
+									]
+								},
+								{
+									"key": "document",
+									"value": "Identificacion",
+									"type": "text"
+								},
+								{
+									"key": "tipofile",
+									"value": "documents",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/users/661e883fbde953e17e60105f/documents",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users",
+								"661e883fbde953e17e60105f",
+								"documents"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "uploadDocuments",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "profileImage",
+											"value": "/profileImage",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "file",
+											"type": "file",
+											"src": [
+												"/C:/Users/mcamp/Pictures/demofondo1.jpg",
+												"/C:/Users/mcamp/Pictures/fondofiambres.png",
+												"/C:/Users/mcamp/Pictures/logo_axion.png"
+											]
+										},
+										{
+											"key": "profileImage",
+											"value": "profiles",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/users/661be3986a1b1e189c5c79ab/documents",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"users",
+										"661be3986a1b1e189c5c79ab",
+										"documents"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://127.0.0.1:5501"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "2"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2-eoX0dku9ba8cNUXvu/DyeabcC+s\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 15 Apr 2024 21:08:41 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "ok"
+						}
+					]
+				},
+				{
+					"name": "uploadDocumentsDomicilio",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5hbWUiOiJub21icmUgdXN1YXJpbyIsImxhc3RfbmFtZSI6ImFwZWxsaWRvIHVzdWFyaW8iLCJlbWFpbCI6InVzdWFyaW9AdXN1YXJpbyIsImFnZSI6NTcsInJvbGUiOiJ1c2VyIiwidXNlcklkIjoiNjYyMmFjYTQ4ZTVkOTQzZTc1MGZjZTg0In0sImlhdCI6MTcxMzYxMjM5OCwiZXhwIjoxNzEzNjE1OTk4fQ.PNJVYV993Fy3WQYFDDdBy7xr_dIdBcEPbDS-ccLLJTA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/mcamp/Pictures/logo_axion.png"
+								},
+								{
+									"key": "document",
+									"value": "Domicilio",
+									"type": "text"
+								},
+								{
+									"key": "tipofile",
+									"value": "documents",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/users/661e883fbde953e17e60105f/documents",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users",
+								"661e883fbde953e17e60105f",
+								"documents"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "uploadDocuments",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "profileImage",
+											"value": "/profileImage",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "file",
+											"type": "file",
+											"src": [
+												"/C:/Users/mcamp/Pictures/demofondo1.jpg",
+												"/C:/Users/mcamp/Pictures/fondofiambres.png",
+												"/C:/Users/mcamp/Pictures/logo_axion.png"
+											]
+										},
+										{
+											"key": "profileImage",
+											"value": "profiles",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/users/661be3986a1b1e189c5c79ab/documents",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"users",
+										"661be3986a1b1e189c5c79ab",
+										"documents"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://127.0.0.1:5501"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "2"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2-eoX0dku9ba8cNUXvu/DyeabcC+s\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 15 Apr 2024 21:08:41 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "ok"
+						}
+					]
+				},
+				{
+					"name": "uploadProfile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5hbWUiOiJub21icmUgdXN1YXJpbyIsImxhc3RfbmFtZSI6ImFwZWxsaWRvIHVzdWFyaW8iLCJlbWFpbCI6InVzdWFyaW9AdXN1YXJpbyIsImFnZSI6NTcsInJvbGUiOiJ1c2VyIiwidXNlcklkIjoiNjYyMmFjYTQ4ZTVkOTQzZTc1MGZjZTg0In0sImlhdCI6MTcxMzYxMjM5OCwiZXhwIjoxNzEzNjE1OTk4fQ.PNJVYV993Fy3WQYFDDdBy7xr_dIdBcEPbDS-ccLLJTA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": [
+										"/C:/Users/mcamp/Pictures/demofondo1.jpg",
+										"/C:/Users/mcamp/Pictures/fondofiambres.png"
+									]
+								},
+								{
+									"key": "document",
+									"value": "Avatar",
+									"type": "text"
+								},
+								{
+									"key": "tipofile",
+									"value": "profiles",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/users/661e883fbde953e17e60105f/documents",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users",
+								"661e883fbde953e17e60105f",
+								"documents"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "uploadDocuments",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "profileImage",
+											"value": "/profileImage",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "file",
+											"type": "file",
+											"src": [
+												"/C:/Users/mcamp/Pictures/demofondo1.jpg",
+												"/C:/Users/mcamp/Pictures/fondofiambres.png",
+												"/C:/Users/mcamp/Pictures/logo_axion.png"
+											]
+										},
+										{
+											"key": "profileImage",
+											"value": "profiles",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/users/661be3986a1b1e189c5c79ab/documents",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"users",
+										"661be3986a1b1e189c5c79ab",
+										"documents"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://127.0.0.1:5501"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "2"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2-eoX0dku9ba8cNUXvu/DyeabcC+s\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 15 Apr 2024 21:08:41 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "ok"
+						}
+					]
+				},
+				{
+					"name": "GetAll",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5hbWUiOiJzdXBlck1hcmlvIiwiZW1haWwiOiJzdXBlck1hcmlvIiwiYWdlIjo1Nywicm9sZSI6ImFkbWluIn0sImlhdCI6MTcxMzgxNjc0MCwiZXhwIjoxNzEzODIwMzQwfQ.FBqVVz7rsaeXr3mGApgjtm1fO-DQDiGnRiobEfm7Sbk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/users/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "email",
+			"item": [
+				{
+					"name": "testsendmail",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5hbWUiOiJzdXBlck1hcmlvIiwiZW1haWwiOiJzdXBlck1hcmlvIiwiYWdlIjo1Nywicm9sZSI6ImFkbWluIn0sImlhdCI6MTcxMzU1Mzk5OSwiZXhwIjoxNzEzNTU3NTk5fQ.Q9peAcntfLQV09ekwVX0RQLDjN1g79wWD_VVDdONctA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/email",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"email"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Password",
+			"item": [
+				{
+					"name": "Reset",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"crivelli@infocam.com.ar\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/password/reset",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"password",
+								"reset"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"token\": \"28047378-afee-47b6-a4aa-ee2e1c0431a4\",\r\n    \"password\": \"654321\",\r\n    \"confirmpassword\": \"654321\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/password/update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"password",
+								"update"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

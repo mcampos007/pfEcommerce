@@ -11,4 +11,5 @@ olds
 src/logs
 
 public/images/**
+public/images/products/**
 !.gitkeep
